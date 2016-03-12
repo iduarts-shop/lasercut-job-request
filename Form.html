@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laser Submission Form - ID.UArts Techroom</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css" rel="stylesheet">
+  <style>
+    .main {
+      max-width: 400px;
+      margin: 30px auto;
+    }
+
+    .spinner {
+      display: none;
+    }
+    .waves-effect input[type="button"], .waves-effect input[type="reset"], .waves-effect input[type="Submit"] {
+    border: 0;
+ font-style: normal;
+ font-size: inherit;
+ text-transform: inherit;
+ background: none; }
+   .dropdown-content li.optgroup {
+     border-top: 1px solid #eee; }
+     .dropdown-content li.optgroup > span {
+       color: rgba(0, 0, 0, 0.4); }
+     .dropdown-content li.optgroup ~ li:not(.optgroup) {
+      padding-left: 1rem; }
+  </style>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+  <script>
+  // Javascript function called by "submit" button handler,
+  // to show results.
+  function updateOutput(resultHtml) {
+    toggle_visibility('inProgress');
+    var outputDiv = document.getElementById('output');
+    outputDiv.innerHTML = resultHtml;
+  }
+
+  // From blog.movalog.com/a/javascript-toggle-visibility/
+  function toggle_visibility(id) {
+    var e = document.getElementById(id);
+    if(e.style.display == 'block')
+      e.style.display = 'none';
+    else
+      e.style.display = 'block';
+  }
+
+  $(document).ready(function() {
+    $('select').material_select();
+});
+    </script>
+</head>
+
+<body>
+  <div class="row main">
+    <div class="col s12">
+      <h5 class="teal-text">LC Submission Form</h5>
+      <br/>
+      <div id="formDiv" class="validate">
+        <!-- Form div will be hidden after form submission -->
+        <form id="myForm form">
+          <div class="input-field">
+            <input placeholder="Ja Doe" type="text" name="name" class="validate" required="" aria-required="true" />
+            <label for="name">Name</label>
+          </div>
+                    <div class="input-field">
+            <input placeholder="jdoe@uarts.edu" name="email" id="email" type="email" class="validate"/>
+            <label for="email">Email</label>
+          </div>
+          <div class="input-field">
+            <input placeholder="Industrial Design" type="text" name="major" class="validate" required="" aria-required="true" />
+            <label for="major">Major</label>
+          </div>
+          <div class="input-field">
+           <textarea placeholder="Are you working with a different material, using metric, do you need copies?" name="message" id="message" class="materialize-textarea"></textarea>
+          <label for="message">Notes</label>
+          </div>
+          <label>Processing Questions</label>
+          <div class="input-field">
+
+    <p>
+    <input type="hidden" id="estimateHidden" name="estimate" value="No Estimate" />
+      <input type="checkbox" id="estimate" name="estimate" value="Send Estimate"/>
+      <label for="estimate">Send Estimate</label><br/>
+      <input type="hidden" id="estimateHidden" name="cet" value="Don't Process" />
+      <input type="hidden" id="cutHidden" name="estimate" value="Process and Cut" />
+      <input type="checkbox" id="cut" name="cut" value="Cut"/>
+      <label for="cut">Process and Cut</label><br/>
+      <input type="hidden" id="rasterHidden" name="raster" value="No Raster" />
+      <input type="checkbox" id="raster" name="raster" value="Includes Raster"/>
+      <label for="raster">File Includes Raster</label><br/>
+    </p>
+            </div>
+            <br/>
+            <label for="material">Material</label>
+          <div class="input-field">
+            <select name="material">
+            <option>Select Material</option>
+  <optgroup label="B.Y.O. Material (Sample Required)">
+    <option value="BYO SM">B.Y.O. 8"x9"</option>
+    <option value="BYO MD">B.Y.O. 16"x18"</option>
+    <option value="BYO LG">B.Y.O. 18"x32"</option>
+  </optgroup>
+  <optgroup label="Cardboard 0.125">
+    <option value="CB 0.125 SM">CB 0.125" 8"x9"</option>
+    <option value="CB 0.125 MD">CB 0.125" 16"x18"</option>
+    <option value="CB 0.125 LG">CB 0.125" 18"x32"</option>
+  </optgroup>
+    <optgroup label="Cardboard (2PLY) 0.25">
+    <option value="CB 0.25 SM">CB 0.25" 8"x9"</option>
+    <option value="CB 0.25 MD">CB 0.25" 16"x18"</option>
+    <option value="CB 0.25 LG">CB 0.25" 18"x32"</option>
+  </optgroup>
+    <optgroup label="Birch Ply 0.125">
+    <option value="Ply 0.125 SM">Ply 0.125" 8"x9"</option>
+    <option value="Ply 0.125 MD">Ply 0.125" 16"x18"</option>
+    <option value="Ply 0.125 LG">Ply 0.125" 18"x32"</option>
+  </optgroup>
+    <optgroup label="Birch Ply 0.25">
+    <option value="Ply 0.25 SM">Ply 0.25" 8"x9"</option>
+    <option value="Ply 0.25 MD">Ply 0.25" 16"x18"</option>
+    <option value="Ply 0.25 LG">Ply 0.25" 18"x32"</option>
+  </optgroup>
+    <optgroup label="Veneer 0.03">
+    <option value="Veneer SM">Veneer 0.03" 8"x9"</option>
+    <option value="Veneer MD">Veneer 0.03" 16"x18"</option>
+    <option value="Veneer LG">Veneer 0.03" 18"x32"</option>
+  </optgroup>
+  <optgroup label="MDF Acrylic 0.125">
+  <option value="MDF 0.125 SM">MDF 0.125" 8"x9"</option>
+  <option value="MDF 0.125 MD">MDF 0.125" 16"x18"</option>
+  <option value="MDF 0.125 LG">MDF 0.125" 18"x32"</option>
+  </optgroup>
+  <optgroup label="MDF Acrylic 0.25">
+  <option value="MDF 0.25 SM">MDF 0.25" 8"x9"</option>
+  <option value="MDF 0.25 MD">MDF 0.25" 16"x18"</option>
+  <option value="MDF 0.25 LG">MDF 0.25" 18"x32"</option>
+  </optgroup>
+    <optgroup label="Clear Acrylic 0.125">
+    <option value="Clear 0.125 SM">Clear 0.125" 8"x9"</option>
+    <option value="Clear 0.125 MD">Clear 0.125" 16"x18"</option>
+    <option value="Clear 0.125 LG">Clear 0.125" 18"x32"</option>
+  </optgroup>
+    <optgroup label="Clear Acrylic 0.25">
+    <option value="Clear 0.25 SM">Clear 0.25" 8"x9"</option>
+    <option value="Clear 0.25 MD">Clear 0.25" 16"x18"</option>
+    <option value="Clear 0.25 LG">Clear 0.25" 18"x32"</option>
+  </optgroup>
+  <optgroup label="White Acrylic 0.125">
+  <option value="White 0.125 SM">White 0.125" 8"x9"</option>
+  <option value="White 0.125 MD">White 0.125" 16"x18"</option>
+  <option value="White 0.125 LG">White 0.125" 18"x32"</option>
+  </optgroup>
+  <optgroup label="White Acrylic 0.25">
+  <option value="White 0.25 SM">White 0.25" 8"x9"</option>
+  <option value="White 0.25 MD">White 0.25" 16"x18"</option>
+  <option value="White 0.25 LG">White 0.25" 18"x32"</option>
+  </optgroup>
+            </select>
+<br/>
+          </div>
+      <h6 class="teal-text">Upload your File:</h6>
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>File</span>
+          <input name="myFile" type="file">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+      <br />
+            <input class=" btn" type="button" value="Submit"
+      onclick="toggle_visibility('formDiv'); toggle_visibility('inProgress');
+        google.script.run
+          .withSuccessHandler(updateOutput)
+          .processForm(this.parentNode); if(document.getElementById('estimate').checked) {
+    document.getElementById('estimateHidden').disabled = true;
+};if(document.getElementById('cut').checked) {
+    document.getElementById('cutHidden').disabled = true;
+};if(document.getElementById('raster').checked) {
+    document.getElementById('rasterHidden').disabled = true;
+}"/>
+
+</form>
+<div id="inProgress" style="display: none;">
+<!-- Progress starts hidden, but will be shown after form submission. -->
+Uploading. Please wait...
+</div>
+
+<div id="output">
+  <!-- Blank div will be filled with "Thanks.html" after form submission. -->
+</div>
+</div>
+</div>
+</div>
+
+
+</body>
+</html>
